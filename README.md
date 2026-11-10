@@ -136,3 +136,7 @@ export ANTHROPIC_API_KEY=...
 - **The "usual documents" per procedure are a simplified example**, not legal advice on
   what a Luxembourg company formation requires.
 - The web page is a local demo: there is no authentication, and it binds to 127.0.0.1 only.
+
+## License
+
+MIT, see [LICENSE](LICENSE). Third-party models keep their own licenses.
