@@ -4,6 +4,7 @@
     python -m bench.run --provider local --record              # ... and record its answers
     python -m bench.run --provider replay --replay-file F      # re-score recorded answers offline
     python -m bench.run --provider claude                      # needs ANTHROPIC_API_KEY
+    ./run.sh claude                                            # the same, with a cost estimate first
 """
 from __future__ import annotations
 
@@ -11,20 +12,52 @@ import argparse
 import datetime as dt
 import json
 import platform
+import re
 import statistics
+import sys
 import time
 from pathlib import Path
 
 import yaml
 
-from structreq import pipeline
+from structreq import pipeline, prompt
 from structreq.catalog import load_catalog
-from structreq.pii import PIILeak
+from structreq.pii import PIILeak, redact
 from structreq.providers import make_provider
 from structreq.providers.replay import RecordingProvider
 
 ROOT = Path(__file__).resolve().parent.parent
 CASES = ROOT / "bench" / "cases.yml"
+
+
+# Claude Haiku 5.5, USD per million tokens, for prompts up to 100,000 tokens (ours are ~2,000).
+PRICE_IN, PRICE_OUT = 0.10, 0.50
+CHARS_PER_TOKEN = 3.0      # deliberately low (FR/DE text, JSON): over-estimates the input
+EXPECTED_OUT_TOKENS = 600  # one JSON answer plus a little thinking at effort "low"
+
+
+def estimate_claude_cost(cases: list[dict], max_tokens: int) -> dict:
+    """Offline estimate, before any call: no network, no key needed."""
+    from structreq.schema import json_schema
+    fixed = len(prompt.system_prompt()) + len(json.dumps(json_schema()))
+    per_call = [(fixed + len(prompt.user_message(redact(c["text"])[0]))) / CHARS_PER_TOKEN for c in cases]
+    exp_in, exp_out = sum(per_call), EXPECTED_OUT_TOKENS * len(cases)
+    # Worst case: every case needs the repair turn, which re-sends the first answer,
+    # and every answer runs to max_tokens.
+    worst_in = sum(2 * t + max_tokens for t in per_call)
+    worst_out = 2 * max_tokens * len(cases)
+    cost = lambda i, o: (i * PRICE_IN + o * PRICE_OUT) / 1e6
+    return {"calls": len(cases), "expected_in": exp_in, "expected_out": exp_out,
+            "expected_usd": cost(exp_in, exp_out), "worst_in": worst_in, "worst_out": worst_out,
+            "worst_usd": cost(worst_in, worst_out)}
+
+
+def print_estimate(model: str, e: dict) -> None:
+    print(f"Cost estimate for {e['calls']} cases on {model} "
+          f"(${PRICE_IN:.2f} / ${PRICE_OUT:.2f} per 1M input / output tokens):\n"
+          f"  expected  : {e['expected_in']:>9,.0f} in + {e['expected_out']:>9,.0f} out  ~ ${e['expected_usd']:.3f}\n"
+          f"  worst case: {e['worst_in']:>9,.0f} in + {e['worst_out']:>9,.0f} out  ~ ${e['worst_usd']:.3f}"
+          f"  (every case repaired, every answer at max_tokens)")
 
 
 def load_cases(path: Path = CASES) -> list[dict]:
@@ -134,6 +167,11 @@ def render(provider_name: str, s: dict, cases: list[dict], runs: list[dict], liv
         f"| Personal data sent to the model | {s['pii_leaks']} leaks over {s['pii_cases']} cases with personal data |",
         f"| Document codes outside the nomenclature in validated output | {s['unknown_codes_in_output']} |",
         f"| Latency p50 / p95 / mean (s){lat_note} | {s['latency_p50']:.2f} / {s['latency_p95']:.2f} / {s['latency_mean']:.2f} |",
+    ]
+    if "cost_usd" in s:
+        lines.append(f"| Tokens in / out, measured cost | {s['input_tokens']:,} / {s['output_tokens']:,}, "
+                     f"${s['cost_usd']:.4f} |")
+    lines += [
         "",
         "<details><summary>Per-case results</summary>",
         "",
@@ -161,10 +199,19 @@ def main(argv=None) -> int:
     ap.add_argument("--replay-file")
     ap.add_argument("--record", action="store_true", help="record live answers to bench/replays/")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--yes", action="store_true", help="claude: skip the confirmation after the cost estimate")
     args = ap.parse_args(argv)
 
     cases = load_cases()[: args.limit] if args.limit else load_cases()
     kwargs = {"model": args.model} if args.model else {}
+    if args.provider == "claude":
+        from structreq.providers.claude import DEFAULT_MODEL, MAX_TOKENS
+        import os
+        print_estimate(args.model or os.environ.get("STRUCTREQ_CLAUDE_MODEL", DEFAULT_MODEL),
+                       estimate_claude_cost(cases, MAX_TOKENS))
+        if not args.yes and input("Run it, billed to your key? [y/N] ").strip().lower() not in ("y", "yes"):
+            print("Cancelled, nothing was sent.")
+            return 1
     if args.provider == "replay":
         kwargs["path"] = args.replay_file
     t0 = time.perf_counter()
@@ -183,6 +230,12 @@ def main(argv=None) -> int:
         print(f"{c['id']:7} {r['status']:8} attempts={r['attempts']} {r['latency_s']:.1f}s {r['documents']}", flush=True)
     s = score(cases, runs)
     s["model_load_s"] = round(load_s, 1)
+    inner = getattr(provider, "inner", provider)
+    if hasattr(inner, "input_tokens"):     # Claude: the measured tokens and cost
+        s["input_tokens"], s["output_tokens"] = inner.input_tokens, inner.output_tokens
+        s["cost_usd"] = round((inner.input_tokens * PRICE_IN + inner.output_tokens * PRICE_OUT) / 1e6, 4)
+        print(f"measured: {inner.input_tokens:,} input + {inner.output_tokens:,} output tokens, "
+              f"${s['cost_usd']:.4f}", file=sys.stderr)
 
     # Replays only re-score recorded answers: kept apart so results.md shows live runs.
     out_dir = ROOT / "results" / ("replay" if args.provider == "replay" else "")
@@ -208,7 +261,7 @@ def build_results_md(out_dir: Path) -> None:
             "|---|---|---|---|---|---|---|---|---|---|"]
     for js in sorted(out_dir.glob("*.json")):
         s = json.loads(js.read_text())["summary"]
-        name = js.stem.replace("local-", "local: ").replace("claude-", "claude: ").replace("_", "/")
+        name = re.sub(r"^(local|claude)-", r"\1: ", js.stem).replace("_", "/")
         rows.append(f"| {name} | {pct(s['valid_first_try'], s['cases'])} | {pct(s['valid_after_repair'], s['cases'])} "
                     f"| {pct(s['correct_refusals'], s['expected_refusals'])} | {pct(s['false_refusals'], s['request_cases'])} "
                     f"| {s['doc_precision']:.2f} | {s['doc_recall']:.2f} | {pct(s['exact_document_sets'], s['request_cases'])} "

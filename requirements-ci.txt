@@ -1,0 +1,4 @@
+# What the fast test suite needs: no torch, no model download, no API key.
+pydantic==2.10.4
+pyyaml==6.0.2
+pytest==8.3.4
