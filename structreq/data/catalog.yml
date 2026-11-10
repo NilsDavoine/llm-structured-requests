@@ -1,0 +1,53 @@
+# Closed nomenclature of documents a client can be asked for.
+# The model may only pick codes from this list; it never invents a document.
+# All entries are generic examples written for this demo repository.
+#
+# `procedures` lists, for each kind of request, the documents usually asked
+# for when the accountant only says "the usual documents".
+
+documents:
+  # identity and company records
+  ID_DOCUMENT:            {en: "Identity card or passport", fr: "Carte d'identité ou passeport", de: "Personalausweis oder Reisepass"}
+  PROOF_OF_ADDRESS:       {en: "Proof of address (less than 3 months old)", fr: "Justificatif de domicile de moins de 3 mois", de: "Wohnsitznachweis (nicht älter als 3 Monate)"}
+  CRIMINAL_RECORD:        {en: "Criminal record extract", fr: "Extrait de casier judiciaire", de: "Strafregisterauszug"}
+  BUSINESS_PERMIT:        {en: "Business permit", fr: "Autorisation d'établissement", de: "Niederlassungsgenehmigung"}
+  BANK_CAPITAL_CERTIFICATE: {en: "Bank certificate of paid-up share capital", fr: "Certificat bancaire de libération du capital", de: "Bankbescheinigung über die Kapitaleinzahlung"}
+  LEASE_OR_DOMICILIATION: {en: "Office lease or domiciliation agreement", fr: "Bail commercial ou contrat de domiciliation", de: "Mietvertrag oder Domizilierungsvertrag"}
+  TRADE_REGISTER_EXTRACT: {en: "Trade register extract", fr: "Extrait du registre de commerce", de: "Handelsregisterauszug"}
+  ARTICLES_OF_ASSOCIATION: {en: "Articles of association", fr: "Statuts", de: "Satzung"}
+  SHAREHOLDER_REGISTER:   {en: "Shareholder register", fr: "Registre des associés", de: "Gesellschafterverzeichnis"}
+  ORG_CHART:              {en: "Group structure chart", fr: "Organigramme du groupe", de: "Organigramm der Gruppe"}
+  # bookkeeping
+  BANK_STATEMENTS:        {en: "Bank statements", fr: "Relevés bancaires", de: "Kontoauszüge"}
+  SALES_INVOICES:         {en: "Sales invoices", fr: "Factures de vente", de: "Ausgangsrechnungen"}
+  PURCHASE_INVOICES:      {en: "Purchase invoices", fr: "Factures d'achat", de: "Eingangsrechnungen"}
+  INVENTORY_LIST:         {en: "Year-end stock count", fr: "Inventaire de fin d'exercice", de: "Inventurliste zum Jahresende"}
+  LOAN_STATEMENTS:        {en: "Loan statements", fr: "Tableaux d'amortissement des prêts", de: "Darlehensaufstellungen"}
+  FIXED_ASSET_INVOICES:   {en: "Invoices for equipment and vehicles bought", fr: "Factures d'immobilisations (matériel, véhicules)", de: "Rechnungen für Anlagegüter (Geräte, Fahrzeuge)"}
+  CASH_BOOK:              {en: "Cash book", fr: "Livre de caisse", de: "Kassenbuch"}
+  CUSTOMS_DOCUMENTS:      {en: "Customs import documents", fr: "Documents douaniers d'importation", de: "Zollunterlagen für Einfuhren"}
+  # payroll
+  EMPLOYMENT_CONTRACT:    {en: "Signed employment contract", fr: "Contrat de travail signé", de: "Unterschriebener Arbeitsvertrag"}
+  TAX_CARD:               {en: "Employee tax card", fr: "Fiche de retenue d'impôt du salarié", de: "Lohnsteuerkarte des Mitarbeiters"}
+  BANK_DETAILS:           {en: "Bank account details document", fr: "Relevé d'identité bancaire", de: "Bankverbindungsnachweis"}
+  WORK_PERMIT:            {en: "Work permit", fr: "Permis de travail", de: "Arbeitserlaubnis"}
+  # personal tax return of the manager
+  SALARY_CERTIFICATE:     {en: "Annual salary certificate", fr: "Certificat de rémunération annuel", de: "Jährliche Lohnbescheinigung"}
+  MORTGAGE_INTEREST_CERTIFICATE: {en: "Mortgage interest certificate", fr: "Attestation d'intérêts du prêt immobilier", de: "Bescheinigung über Hypothekenzinsen"}
+  INSURANCE_PREMIUMS_CERTIFICATE: {en: "Insurance premiums certificate", fr: "Attestation des primes d'assurance", de: "Bescheinigung über Versicherungsprämien"}
+  PENSION_SAVINGS_CERTIFICATE: {en: "Private pension savings certificate", fr: "Attestation d'épargne-pension", de: "Bescheinigung über private Altersvorsorge"}
+  # documents the firm prepares and the client returns signed
+  ENGAGEMENT_LETTER_SIGNED: {en: "Signed engagement letter", fr: "Lettre de mission signée", de: "Unterschriebenes Mandatsschreiben"}
+  POWER_OF_ATTORNEY_SIGNED: {en: "Signed power of attorney", fr: "Procuration signée", de: "Unterschriebene Vollmacht"}
+  AGM_MINUTES_SIGNED:     {en: "Signed minutes of the annual general meeting", fr: "Procès-verbal d'assemblée générale signé", de: "Unterschriebenes Protokoll der Hauptversammlung"}
+  SIGNED_ANNUAL_ACCOUNTS: {en: "Signed annual accounts", fr: "Comptes annuels signés", de: "Unterschriebener Jahresabschluss"}
+
+procedures:
+  company_formation:   {label: "Company formation (SARL, SARL-S)", usual: [ID_DOCUMENT, PROOF_OF_ADDRESS, CRIMINAL_RECORD, BUSINESS_PERMIT, BANK_CAPITAL_CERTIFICATE, LEASE_OR_DOMICILIATION]}
+  annual_accounts:     {label: "Annual accounts", usual: [BANK_STATEMENTS, SALES_INVOICES, PURCHASE_INVOICES, INVENTORY_LIST]}
+  vat_return:          {label: "VAT return", usual: [SALES_INVOICES, PURCHASE_INVOICES, BANK_STATEMENTS]}
+  new_employee:        {label: "Hiring an employee (payroll set-up)", usual: [EMPLOYMENT_CONTRACT, ID_DOCUMENT, TAX_CARD, BANK_DETAILS]}
+  beneficial_owners:   {label: "Beneficial owner register update", usual: [ID_DOCUMENT, PROOF_OF_ADDRESS, SHAREHOLDER_REGISTER, ORG_CHART]}
+  client_onboarding:   {label: "New client due diligence (KYC)", usual: [TRADE_REGISTER_EXTRACT, ARTICLES_OF_ASSOCIATION, ID_DOCUMENT, PROOF_OF_ADDRESS, SHAREHOLDER_REGISTER]}
+  personal_tax_return: {label: "Personal income tax return of the manager", usual: [SALARY_CERTIFICATE, MORTGAGE_INTEREST_CERTIFICATE, INSURANCE_PREMIUMS_CERTIFICATE, PENSION_SAVINGS_CERTIFICATE]}
+  general_meeting:     {label: "Annual general meeting", usual: [AGM_MINUTES_SIGNED, SIGNED_ANNUAL_ACCOUNTS]}

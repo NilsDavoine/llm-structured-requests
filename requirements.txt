@@ -1,0 +1,12 @@
+# CUDA 12.8 build of torch; on a machine without an NVIDIA GPU replace the
+# index with https://download.pytorch.org/whl/cpu and torch==2.7.0+cpu.
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.7.0+cu128
+transformers==4.46.3
+tokenizers==0.20.3
+huggingface-hub==0.26.5
+safetensors==0.4.5
+regex==2024.11.6
+pydantic==2.10.4
+pyyaml==6.0.2
+pytest==8.3.4

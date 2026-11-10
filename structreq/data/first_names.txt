@@ -1,0 +1,13 @@
+# Common first names in Luxembourg's main communities (French, German,
+# Luxembourgish, Portuguese, Italian, English). Words that are also ordinary
+# capitalised words in a business sentence (May, June, April, Bill, Mark, Will,
+# Rose, Frank, Grace, Claude...) are deliberately left out.
+Jean Pierre Paul Michel Nicolas Marc Luc Louis Philippe Alain Pascal Laurent Yves Romain Gilles Christophe Thierry Olivier Sébastien Julien Mathieu Antoine Hugo Lucas Théo Arthur Gabriel Raphaël Jules Nathan Thomas Benoît Didier Bernard Serge Jacques François Guillaume Vincent Fabrice Jérôme Cédric Damien Kevin
+Marie Anne Sophie Julie Nathalie Isabelle Catherine Christine Sandrine Carole Valérie Céline Émilie Emilie Camille Chloé Léa Lea Manon Inès Ines Clara Alice Juliette Charlotte Pauline Mélanie Aurélie Virginie Martine Monique Sylvie Brigitte Françoise Hélène Caroline Laetitia Elodie Audrey Marion
+Klaus Jürgen Stefan Andreas Michael Peter Wolfgang Hans Uwe Dieter Jörg Markus Tobias Florian Lukas Jonas Felix Maximilian Sebastian Matthias Christian Daniel Tim Jan Sven Dirk Ralf Holger
+Sabine Ursula Monika Petra Claudia Anja Katrin Andrea Susanne Birgit Heike Kerstin Stefanie Julia Lena Hannah Anna Lisa Laura Sarah Mia Emma Lara Nina Jana Marlene
+Jos Mett Fernand Gaston Marcel Nico Tun Pit Jang Ben Tom Max Chris Steve Joël Lynn Joëlle Nadine Tessy Sandy Myriam
+João José António Antonio Manuel Paulo Rui Carlos Pedro Luís Luis Miguel Jorge Nuno Ricardo Tiago Diogo Vítor Vitor Hugo Fernando Sérgio Sergio
+Ana Maria Joana Sónia Sonia Fernanda Catarina Rita Patrícia Patricia Cláudia Mariana Beatriz Inês Teresa Fátima Fatima Filipa Sofia
+Giovanni Marco Luca Alessandro Francesco Matteo Lorenzo Davide Stefano Roberto Giulia Francesca Chiara Elena Valentina Silvia Paola
+John James Robert David Richard William Matthew Andrew Brian George Edward Henry Oliver Jack Harry Charles Steven Paul Mary Susan Karen Linda Elizabeth Emily Jessica Olivia Sophia Amelia Emma Rachel Rebecca Helen

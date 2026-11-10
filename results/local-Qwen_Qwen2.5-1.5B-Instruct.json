@@ -1,0 +1,1077 @@
+{
+ "summary": {
+  "cases": 60,
+  "valid_first_try": 41,
+  "valid_after_repair": 51,
+  "failed": 9,
+  "correct_refusals": 10,
+  "expected_refusals": 14,
+  "refusal_reason_ok": 7,
+  "false_refusals": 5,
+  "request_cases": 46,
+  "doc_precision": 0.8953488372093024,
+  "doc_recall": 0.5310344827586206,
+  "exact_document_sets": 16,
+  "due_ok": 10,
+  "due_cases": 10,
+  "pii_cases": 10,
+  "pii_leaks": 0,
+  "unknown_codes_in_output": 0,
+  "latency_p50": 23.283,
+  "latency_p95": 41.499,
+  "latency_mean": 27.0714,
+  "model_load_s": 7.6
+ },
+ "runs": [
+  {
+   "id": "fr-01",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "ID_DOCUMENT",
+    "PROOF_OF_ADDRESS",
+    "BUSINESS_PERMIT",
+    "LEASE_OR_DOMICILIATION",
+    "TRADE_REGISTER_EXTRACT",
+    "ARTICLES_OF_ASSOCIATION",
+    "SHAREHOLDER_REGISTER"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 34.725,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-02",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 40.283,
+   "errors": [
+    "title: String should have at most 80 characters; documents.0.code: unknown document code 'CAPITAL_BLOCKING_CERTIFICATE': pick a code from the list"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-03",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "BANK_STATEMENTS",
+    "SALES_INVOICES",
+    "PURCHASE_INVOICES",
+    "INVENTORY_LIST"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 30,
+   "latency_s": 29.989,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-04",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "SALES_INVOICES",
+    "PURCHASE_INVOICES",
+    "BANK_STATEMENTS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 27.029,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-05",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "PURCHASE_INVOICES"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 18.538,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-06",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 41.515,
+   "errors": [
+    "documents.2.code: unknown document code 'RIB': pick a code from the list",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-07",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "EMPLOYMENT_CONTRACT",
+    "ID_DOCUMENT",
+    "TAX_CARD",
+    "BANK_DETAILS",
+    "WORK_PERMIT"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 28.201,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-08",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "ID_DOCUMENT",
+    "PROOF_OF_ADDRESS",
+    "SHAREHOLDER_REGISTER"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 15,
+   "latency_s": 22.938,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-09",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 40.159,
+   "errors": [
+    "additional_notes: Extra inputs are not permitted"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-10",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "TRADE_REGISTER_EXTRACT",
+    "ARTICLES_OF_ASSOCIATION"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 20.083,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-11",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "AGM_MINUTES_SIGNED",
+    "SIGNED_ANNUAL_ACCOUNTS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 7,
+   "latency_s": 22.224,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-12",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "BANK_STATEMENTS",
+    "SALES_INVOICES",
+    "PURCHASE_INVOICES"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 23.258,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-13",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 38.955,
+   "errors": [
+    "procedure: unknown procedure 'engagement_letter_signed': use one of the listed procedures or 'other'",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-14",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 47.206,
+   "errors": [
+    "documents.4.code: unknown document code 'PHONE_NUMBER': pick a code from the list",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "PERSON",
+    "PHONE_OR_ID"
+   ]
+  },
+  {
+   "id": "fr-15",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "ID_DOCUMENT"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 17.468,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "EMAIL",
+    "PERSON",
+    "PHONE_OR_ID"
+   ]
+  },
+  {
+   "id": "fr-16",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "EMPLOYMENT_CONTRACT",
+    "ID_DOCUMENT",
+    "TAX_CARD",
+    "BANK_DETAILS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 24.517,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "PERSON",
+    "PHONE_OR_ID"
+   ]
+  },
+  {
+   "id": "fr-17",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "ID_DOCUMENT",
+    "PROOF_OF_ADDRESS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 21.942,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "ADDRESS",
+    "POSTCODE"
+   ]
+  },
+  {
+   "id": "fr-18",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 30.913,
+   "errors": [
+    "answer: a request needs at least one document"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-19",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 31.343,
+   "errors": [
+    "answer: a request needs at least one document"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-20",
+   "status": "refused",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [],
+   "refusal_reason": "off_topic",
+   "due_in_days": null,
+   "latency_s": 14.575,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-21",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "TRADE_REGISTER_EXTRACT",
+    "ARTICLES_OF_ASSOCIATION",
+    "ID_DOCUMENT",
+    "PROOF_OF_ADDRESS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 23.396,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-22",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 30.785,
+   "errors": [
+    "answer: a request needs at least one document"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-23",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "INVENTORY_LIST"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 21,
+   "latency_s": 18.833,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "fr-24",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 36.135,
+   "errors": [
+    "additional_notes: Extra inputs are not permitted"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-01",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 37.826,
+   "errors": [
+    "usual_documents: Extra inputs are not permitted"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-02",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "BANK_STATEMENTS",
+    "SALES_INVOICES",
+    "PURCHASE_INVOICES"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 30,
+   "latency_s": 24.042,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-03",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "SALES_INVOICES",
+    "PURCHASE_INVOICES",
+    "BANK_STATEMENTS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 22.867,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-04",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "EMPLOYMENT_CONTRACT",
+    "ID_DOCUMENT",
+    "TAX_CARD",
+    "BANK_DETAILS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 30,
+   "latency_s": 22.882,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-05",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "TRADE_REGISTER_EXTRACT",
+    "ARTICLES_OF_ASSOCIATION"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 19.576,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-06",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "SALARY_CERTIFICATE",
+    "INSURANCE_PREMIUMS_CERTIFICATE",
+    "PENSION_SAVINGS_CERTIFICATE"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 10,
+   "latency_s": 22.688,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-07",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 37.176,
+   "errors": [
+    "title: String should have at most 80 characters",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-08",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 37.559,
+   "errors": [
+    "procedure: unknown procedure 'fixed_asset_invoices': use one of the listed procedures or 'other'",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-09",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "AGM_MINUTES_SIGNED"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 18.053,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-10",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 39.702,
+   "errors": [
+    "email: Extra inputs are not permitted",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "EMAIL",
+    "PERSON"
+   ]
+  },
+  {
+   "id": "en-11",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "EMPLOYMENT_CONTRACT"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 17.434,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "PERSON",
+    "PHONE_OR_ID"
+   ]
+  },
+  {
+   "id": "en-12",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "TRADE_REGISTER_EXTRACT",
+    "PROOF_OF_ADDRESS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 19.883,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "ADDRESS",
+    "IBAN"
+   ]
+  },
+  {
+   "id": "en-13",
+   "status": "refused",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [],
+   "refusal_reason": "off_topic",
+   "due_in_days": null,
+   "latency_s": 14.686,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-14",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "off_topic",
+   "due_in_days": null,
+   "latency_s": 33.542,
+   "errors": [
+    "procedure: unknown procedure 'translation': use one of the listed procedures or 'other'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-15",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 30.986,
+   "errors": [
+    "answer: a request needs at least one document"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-16",
+   "status": "refused",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 14.846,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-17",
+   "status": "refused",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 14.796,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "en-18",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "ID_DOCUMENT",
+    "PROOF_OF_ADDRESS",
+    "CRIMINAL_RECORD",
+    "BUSINESS_PERMIT"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 14,
+   "latency_s": 23.031,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-01",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 76.214,
+   "errors": [
+    "documents.1.description: Extra inputs are not permitted; documents.2.description: Extra inputs are not permitted; documents.3.description: Extra inputs are not permitted; documents.4.description: Extra inputs are not permitted; documents.5.description: Extra inputs are not permitted",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-02",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "BANK_STATEMENTS",
+    "SALES_INVOICES",
+    "PURCHASE_INVOICES",
+    "INVENTORY_LIST"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 30,
+   "latency_s": 31.913,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-03",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "SALES_INVOICES",
+    "BANK_STATEMENTS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 10,
+   "latency_s": 22.397,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-04",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 41.499,
+   "errors": [
+    "documents.1.code: unknown document code 'SALE_INVOICES': pick a code from the list",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-05",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "SALES_INVOICES",
+    "PURCHASE_INVOICES",
+    "BANK_STATEMENTS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 24.931,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-06",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "ID_DOCUMENT",
+    "PROOF_OF_ADDRESS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 14,
+   "latency_s": 20.915,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-07",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "TRADE_REGISTER_EXTRACT"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 17.556,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-08",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "SALARY_CERTIFICATE",
+    "INSURANCE_PREMIUMS_CERTIFICATE"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 20.801,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-09",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "BANK_STATEMENTS",
+    "CASH_BOOK"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 20.009,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-10",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "AGM_MINUTES_SIGNED",
+    "SIGNED_ANNUAL_ACCOUNTS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": 10,
+   "latency_s": 23.308,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-11",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "SALES_INVOICES",
+    "BANK_STATEMENTS",
+    "INVENTORY_LIST"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 22.486,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "PERSON",
+    "PHONE_OR_ID"
+   ]
+  },
+  {
+   "id": "de-12",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "ID_DOCUMENT",
+    "EMPLOYMENT_CONTRACT"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 18.696,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "ADDRESS",
+    "PERSON"
+   ]
+  },
+  {
+   "id": "de-13",
+   "status": "refused",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": "too_vague",
+   "due_in_days": null,
+   "latency_s": 36.7,
+   "errors": [
+    "additional_notes: Extra inputs are not permitted"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": [
+    "EMAIL",
+    "PERSON"
+   ]
+  },
+  {
+   "id": "de-14",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "ID_DOCUMENT",
+    "PROOF_OF_ADDRESS"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 18.91,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-15",
+   "status": "refused",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [],
+   "refusal_reason": "off_topic",
+   "due_in_days": null,
+   "latency_s": 14.571,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-16",
+   "status": "failed",
+   "first_try_valid": false,
+   "attempts": 2,
+   "documents": [],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 32.018,
+   "errors": [
+    "procedure: unknown procedure 'not_applicable': use one of the listed procedures or 'other'",
+    "refusal_reason: Input should be 'off_topic' or 'too_vague'"
+   ],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-17",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "BANK_STATEMENTS",
+    "SALES_INVOICES",
+    "PURCHASE_INVOICES",
+    "INVENTORY_LIST"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 24.028,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  },
+  {
+   "id": "de-18",
+   "status": "request",
+   "first_try_valid": true,
+   "attempts": 1,
+   "documents": [
+    "INVENTORY_LIST",
+    "FIXED_ASSET_INVOICES"
+   ],
+   "refusal_reason": null,
+   "due_in_days": null,
+   "latency_s": 20.747,
+   "errors": [],
+   "pii_leaks": 0,
+   "unknown_codes": 0,
+   "redacted": []
+  }
+ ]
+}
