@@ -1,5 +1,7 @@
 # llm-structured-requests
 
+[![tests](https://github.com/NilsDavoine/llm-structured-requests/actions/workflows/tests.yml/badge.svg)](https://github.com/NilsDavoine/llm-structured-requests/actions/workflows/tests.yml)
+
 ![The local page: one sentence becomes a structured request with the address removed before the call (left); a prompt-injection attempt is refused (right)](docs/screenshot.png)
 
 *The local page (`./run.sh serve`), here on recorded answers of the 1.5B local model. Left: the
